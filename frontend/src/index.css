@@ -1,0 +1,69 @@
+@tailwind base;
+@layer base {
+  html {
+    @apply text-gray-800;
+  } 
+}
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  @apply bg-primary text-primary
+}
+
+.rounded-div {
+  @apply border border-secondary rounded-md shadow-xl bg-primary px-2 max-w-[1140px]  w-full mx-auto  
+}
+
+.simulation-div {
+  @apply border border-secondary rounded-2xl shadow-xl bg-primary px-2 max-w-[800px]  w-full 
+}
+
+.nav-div {
+  @apply   shadow-xl bg-blue-950 px-2  w-full  mx-auto  
+}
+
+
+.secondary-div{
+  @apply border border-secondary rounded-md shadow-xl bg-back px-2 max-w-[1110px]  w-full mx-auto py-3
+}
+
+.dark {
+  --color-bg-primary: #283141;
+  --color-bg-secondary: #283141;
+  --color-bg-back: #364560;
+  --color-text-primary: #dbdbdb;
+  --color-text-secondary: #e2e8f0;
+  --color-text-accent: #81e6d9;
+  --color-bg-input: #4a5361;
+  --color-bg-button: #2b6cb0;
+}
+
+.light {
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #d8dee4;
+  --color-bg-back: #dadfe4;
+  --color-text-primary: #2d3748;
+  --color-text-secondary: #4a5568;
+  --color-text-accent: #2b6cb0;
+  --color-bg-input: #edf2f7;
+  --color-bg-button: #2b6cb0;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #555;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #0357f3;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #04a0ee;
+}
