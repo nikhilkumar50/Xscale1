@@ -12,6 +12,7 @@ const Simulation = () => {
   const [isSaved, setIsSaved] = useState(false);
   const [showSimulationResult, setShowSimulationResult] = useState(false);
   const [data, setData] = useState([]);
+  const[fetchDetails,setFetchDetails]=useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +41,7 @@ const Simulation = () => {
       }
     };
     fetchData();
-  },[isSaved]);
+  },[fetchDetails]);
 
   
 
@@ -88,7 +89,8 @@ const Simulation = () => {
       );
       console.log("Server response:", response.data);
       
-      setIsSaved(!isSaved);
+      setIsSaved(true);
+      setFetchDetails(!fetchDetails)
       toast.success("Saved successfully!");
 
     } catch (error) {
