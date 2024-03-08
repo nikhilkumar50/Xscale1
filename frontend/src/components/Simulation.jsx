@@ -103,7 +103,7 @@ const Simulation = () => {
       toast.error("Please Save Before Simulating.");
       return;
     }
-    
+    setFetchDetails(!fetchDetails)
     setShowSimulationResult(true);
 
     
