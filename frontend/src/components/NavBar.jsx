@@ -29,13 +29,13 @@ const Navbar = () => {
         </Link>
         <Link
           to="/inputcost"
-          className="bg-button text-white px-4 py-2 ml-2 rounded-xl shadow-lg hover:shadow-2xl"
+          className="bg-button text-white px-4 py-2 ml-2 rounded-sm shadow-lg hover:shadow-2xl"
         >
           Cost Input
         </Link>
         <Link
           to="/simulation"
-          className="bg-button text-white px-4 py-2 ml-2 rounded-xl shadow-lg hover:shadow-2xl"
+          className="bg-button text-white px-4 py-2 ml-2 rounded-sm shadow-lg hover:shadow-2xl"
         >
           Simulation
         </Link>
@@ -48,7 +48,7 @@ const Navbar = () => {
           </Link>
           <button
             onClick={handleSignOut}
-            className="ml-2 px-5  bg-button text-white rounded-2xl shadow-xl hover:shadow-2xl"
+            className="ml-2 px-4  bg-button text-white rounded-sm shadow-xl hover:shadow-2xl"
           >
             Sign Out
           </button>
