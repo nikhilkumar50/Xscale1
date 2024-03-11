@@ -653,11 +653,21 @@ const Simulation = () => {
 
       <ToastContainer />
 
-      <div className="border border-secondary rounded-md shadow-xl bg-primary px-2   w-full mx-auto min-h-screen">
+      <div className="w-full border border-secondary rounded-md shadow-xl bg-primary px-2 min-h-screen">
         {showSimulationResult && (
-          <div className="border border-secondary rounded-2xl shadow-xl bg-primary px-2 max-w-5xl mt-4  w-full mx-auto">
-            <SimulationReport data={data} />
-          </div>
+          <>
+            <h1 className="text-xl font-bold text-center mb-4 p-4">
+              Simulation Result
+            </h1>
+            <div className="flex flex-row gap-1">
+              <div className="w-3/4 ">
+                <SimulationReport data={data} />
+              </div>
+              <div className="w-1/4 border border-black rounded-md shadow-xl bg-primary px-2 p-5  mt-4 mb-2">
+               
+              </div>
+            </div>
+          </>
         )}
       </div>
     </div>

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
 import axios from "axios";
 
-const SimulationReport = ({data}) => {
-  
+const SimulationReport = ({ data }) => {
   // const [data, setData] = useState([]);
 
   // useEffect(() => {
@@ -36,13 +35,11 @@ const SimulationReport = ({data}) => {
   //   fetchData();
   // }, [data]);
   return (
-    <div className="mx-auto p-5">
-      <h1 className="text-xl font-bold text-center mb-4">Report</h1>
-
+    <>
       {data.length > 0 && (
-        <div className="rounded-div mb-2">
-          <table className="table mb-2">
-            <thead className="bg-secondary-div">
+        <div className="border border-secondary rounded-md shadow-xl bg-primary px-2  mt-4 mb-2">
+          <table className="mb-2">
+            <thead className="">
               <tr>
                 {Object.keys(data[0]).map((key) => (
                   <th key={key} className="px-4 py-2 text-left text-white">
@@ -68,7 +65,7 @@ const SimulationReport = ({data}) => {
           </table>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
