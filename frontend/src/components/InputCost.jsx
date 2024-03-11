@@ -229,6 +229,7 @@ const InputCost = () => {
                     name="costTitle"
                     onChange={handleChange}
                     value={formData.costTitle}
+                    autoComplete="off"
                     
                   />
                 </div>
@@ -244,6 +245,7 @@ const InputCost = () => {
                     name="description"
                     onChange={handleChange}
                     value={formData.description}
+                    autoComplete="off"
                     
                   />
                 </div>
@@ -261,6 +263,7 @@ const InputCost = () => {
                     name="ProductName"
                     onChange={handleChange}
                     value={formData.ProductName}
+                    autoComplete="off"
                   />
                 </div>
 
@@ -275,6 +278,7 @@ const InputCost = () => {
                     name="geolocation"
                     onChange={handleChange}
                     value={formData.geolocation}
+                    autoComplete="off"
                   />
                 </div>
               </div>
@@ -332,6 +336,7 @@ const InputCost = () => {
                     name="upFrontProductDevelopmentCost"
                     onChange={handleChange}
                     value={formData.upFrontProductDevelopmentCost}
+                    autoComplete="off"
                   />
                 </div>
 
@@ -349,6 +354,7 @@ const InputCost = () => {
                     name="ongoingproductdevelopmentCost"
                     onChange={handleChange}
                     value={formData.ongoingproductdevelopmentCost}
+                    autoComplete="off"
                   />
                 </div>
 
@@ -366,6 +372,7 @@ const InputCost = () => {
                     name="otherFixedAdminCost"
                     onChange={handleChange}
                     value={formData.otherFixedAdminCost}
+                    autoComplete="off"
                   />
                 </div>
 
@@ -383,6 +390,7 @@ const InputCost = () => {
                     name="otherFixedInfrastructureCost"
                     onChange={handleChange}
                     value={formData.otherFixedInfrastructureCost}
+                    autoComplete="off"
                   />
                 </div>
 
@@ -400,6 +408,7 @@ const InputCost = () => {
                     name="upfrontImplementationCostPerCustomer"
                     onChange={handleChange}
                     value={formData.upfrontImplementationCostPerCustomer}
+                    autoComplete="off"
                   />
                 </div>
 
@@ -417,6 +426,7 @@ const InputCost = () => {
                     name="salesAndMarketingCost"
                     onChange={handleChange}
                     value={formData.salesAndMarketingCost}
+                    autoComplete="off"
                   />
                 </div>
 
@@ -434,6 +444,7 @@ const InputCost = () => {
                     name="extraCostSpace1"
                     onChange={handleChange}
                     value={formData.extraCostSpace1}
+                    autoComplete="off"
                   />
                 </div>
 
@@ -451,6 +462,7 @@ const InputCost = () => {
                     name="extraCostSpace2"
                     onChange={handleChange}
                     value={formData.extraCostSpace2}
+                    autoComplete="off"
                   />
                 </div>
               </div>
@@ -508,6 +520,7 @@ const InputCost = () => {
                     name="infrastructureBasedCostPerUserPerYear"
                     onChange={handleChange}
                     value={formData.infrastructureBasedCostPerUserPerYear}
+                    autoComplete="off"
                   />
                 </div>
 
@@ -525,6 +538,7 @@ const InputCost = () => {
                     name="ImplementationCostPerUser"
                     onChange={handleChange}
                     value={formData.ImplementationCostPerUser}
+                    autoComplete="off"
                   />
                 </div>
 
@@ -542,6 +556,7 @@ const InputCost = () => {
                     name="supportCostPerYearPerUser"
                     onChange={handleChange}
                     value={formData.supportCostPerYearPerUser}
+                    autoComplete="off"
                   />
                 </div>
 
@@ -559,6 +574,7 @@ const InputCost = () => {
                     name="incrementalSaledAndMarketingCostPerUser"
                     onChange={handleChange}
                     value={formData.incrementalSaledAndMarketingCostPerUser}
+                    autoComplete="off"
                   />
                 </div>
 
@@ -573,6 +589,7 @@ const InputCost = () => {
                     name="costOfCapital"
                     onChange={handleChange}
                     value={formData.costOfCapital}
+                    autoComplete="off"
                   />
                 </div>
 
@@ -590,6 +607,7 @@ const InputCost = () => {
                     name="otherVariableCost"
                     onChange={handleChange}
                     value={formData.otherVariableCost}
+                    autoComplete="off"
                   />
                 </div>
               </div>
@@ -668,6 +686,7 @@ const InputCost = () => {
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
                           onChange={handleChange} 
                           value={formData.product_development_cost_y1 } 
+                          autoComplete="off"
 
                           
                         />

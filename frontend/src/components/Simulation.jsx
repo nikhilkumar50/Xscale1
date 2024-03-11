@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BsArrowLeftCircle } from "react-icons/bs";
 import axios from "axios";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import SimulationReport from "./SimulationReport";
 import * as XLSX from "xlsx";
 
@@ -12,7 +12,7 @@ const Simulation = () => {
   const [isSaved, setIsSaved] = useState(false);
   const [showSimulationResult, setShowSimulationResult] = useState(false);
   const [data, setData] = useState([]);
-  const[fetchDetails,setFetchDetails]=useState(false);
+  const [fetchDetails, setFetchDetails] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,11 +41,7 @@ const Simulation = () => {
       }
     };
     fetchData();
-  },[fetchDetails]);
-
-  
-
-
+  }, [fetchDetails]);
 
   const [formData, setFormData] = useState({
     TargetYear: "",
@@ -64,7 +60,6 @@ const Simulation = () => {
     mincustomerY1: "",
     maxcustomerY1: "",
 
-    
     y1CustomerGrowth: "",
     y2CustomerGrowth: "",
     y3CustomerGrowth: "",
@@ -74,15 +69,18 @@ const Simulation = () => {
     averagecustomerretention: "",
     averagecustomerusage: "",
 
-    subscriptionType:selectedOption,
+    subscriptionType: selectedOption,
   });
 
   const handleChange = (event) => {
+    event.preventDefault();
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
     });
   };
+
+ 
 
   const handleSubmit = async (event) => {
     try {
@@ -91,11 +89,10 @@ const Simulation = () => {
         formData
       );
       console.log("Server response:", response.data);
-      
-      setIsSaved(true);
-      setFetchDetails(!fetchDetails)
-      toast.success("Saved successfully!");
 
+      setIsSaved(true);
+      setFetchDetails(!fetchDetails);
+      toast.success("Saved successfully!");
     } catch (error) {
       console.error("Error submitting data:", error);
     }
@@ -106,10 +103,8 @@ const Simulation = () => {
       toast.error("Please Save Before Simulating.");
       return;
     }
-    setFetchDetails(!fetchDetails)
+    setFetchDetails(!fetchDetails);
     setShowSimulationResult(true);
-
-    
   };
 
   return (
@@ -179,7 +174,7 @@ const Simulation = () => {
               className="text-primary mb-1 mt-1 text-sm font-bold"
               htmlFor="TargetMargin"
             >
-              Target Margin
+              Target Margin(%)
             </label>
             <input
               className={`border-secondary border-2  ${
@@ -190,7 +185,7 @@ const Simulation = () => {
               name="TargetMargin"
               onChange={handleChange}
               value={formData.TargetMargin}
-              
+              autocomplete="off"
             />
           </div>
 
@@ -281,16 +276,14 @@ const Simulation = () => {
                     className="hidden"
                     checked={selectedOption === "annual"}
                     onChange={handleChange}
-                    onClick={()=>setSelectedOption("annual")}
+                    onClick={() => setSelectedOption("annual")}
                   />
                   <div
                     className={`border-secondary border-2 rounded-md h-6 cursor-pointer ${
                       selectedOption === "annual" ? "bg-back" : ""
                     } max-w-20`}
                   >
-                    <span className=" text-sm font-bold p-1  ">
-                      Annually
-                    </span>
+                    <span className=" text-sm font-bold p-1  ">Annually</span>
                   </div>
                 </label>
                 <label htmlFor="monthly" className="flex items-center">
@@ -309,9 +302,7 @@ const Simulation = () => {
                       selectedOption === "monthly" ? "bg-back" : ""
                     } max-w-20 h-6`}
                   >
-                    <span className=" text-sm font-bold p-1">
-                      Monthly
-                    </span>
+                    <span className=" text-sm font-bold p-1">Monthly</span>
                   </div>
                 </label>
               </div>
@@ -319,15 +310,13 @@ const Simulation = () => {
           </div>
 
           <div className={`mt-3 text-sm font-bold`}>
-            YOY Product Price Growth rate
+            YOY Product Price Growth rate(%)
           </div>
 
           <div className={`flex flex-row  gap-2 mt-1  `}>
             <div className="flex flex-row gap-1 pt-1">
               <label
-                className={`mt-1 ${
-                  open && "ml-1"
-                } text-center text-sm  h-6`}
+                className={`mt-1 ${open && "ml-1"} text-center text-sm  h-6`}
                 htmlFor="y1PriceGrowth"
               >
                 Y1
@@ -341,6 +330,7 @@ const Simulation = () => {
                 name="y1PriceGrowth"
                 onChange={handleChange}
                 value={formData.y1PriceGrowth}
+                autocomplete="off"
               />
             </div>
 
@@ -360,6 +350,7 @@ const Simulation = () => {
                 name="y2PriceGrowth"
                 onChange={handleChange}
                 value={formData.y2PriceGrowth}
+                autocomplete="off"
               />
             </div>
 
@@ -379,6 +370,7 @@ const Simulation = () => {
                 name="y3PriceGrowth"
                 onChange={handleChange}
                 value={formData.y3PriceGrowth}
+                autocomplete="off"
               />
             </div>
 
@@ -398,6 +390,7 @@ const Simulation = () => {
                 name="y4PriceGrowth"
                 onChange={handleChange}
                 value={formData.y4PriceGrowth}
+                autocomplete="off"
               />
             </div>
 
@@ -417,6 +410,7 @@ const Simulation = () => {
                 name="y5PriceGrowth"
                 onChange={handleChange}
                 value={formData.y5PriceGrowth}
+                autocomplete="off"
               />
             </div>
           </div>
@@ -505,15 +499,13 @@ const Simulation = () => {
           </div>
 
           <div className={`mt-3 text-sm font-bold `}>
-            YOY Customer Growth rate
+            YOY Customer Growth rate(%)
           </div>
 
           <div className={`flex flex-row  gap-2 mt-1 `}>
             <div className="flex flex-row gap-1 pt-1">
               <label
-                className={`mt-1 ${
-                  open && "ml-1"
-                } text-center text-sm  h-6 `}
+                className={`mt-1 ${open && "ml-1"} text-center text-sm  h-6 `}
                 htmlFor="y1CustomerGrowth"
               >
                 Y1
@@ -527,6 +519,7 @@ const Simulation = () => {
                 name="y1CustomerGrowth"
                 onChange={handleChange}
                 value={formData.y1CustomerGrowth}
+                autocomplete="off"
               />
             </div>
 
@@ -546,6 +539,7 @@ const Simulation = () => {
                 name="y2CustomerGrowth"
                 onChange={handleChange}
                 value={formData.y2CustomerGrowth}
+                autocomplete="off"
               />
             </div>
 
@@ -565,6 +559,7 @@ const Simulation = () => {
                 name="y3CustomerGrowth"
                 onChange={handleChange}
                 value={formData.y3CustomerGrowth}
+                autocomplete="off"
               />
             </div>
 
@@ -584,6 +579,7 @@ const Simulation = () => {
                 name="y4CustomerGrowth"
                 onChange={handleChange}
                 value={formData.y4CustomerGrowth}
+                autocomplete="off"
               />
             </div>
 
@@ -603,6 +599,7 @@ const Simulation = () => {
                 name="y5CustomerGrowth"
                 onChange={handleChange}
                 value={formData.y5CustomerGrowth}
+                autocomplete="off"
               />
             </div>
           </div>
@@ -645,7 +642,7 @@ const Simulation = () => {
               className="text-primary mb-1 mt-1 text-sm font-bold"
               htmlFor="averagecustomerretention"
             >
-              Average Yearly Customer Retenation Rate
+              Average Yearly Customer Retenation Rate(%)
             </label>
             <input
               className={`border-secondary border-2  ${
@@ -656,6 +653,7 @@ const Simulation = () => {
               name="averagecustomerretention"
               onChange={handleChange}
               value={formData.averagecustomerretention}
+              autocomplete="off"
             />
           </div>
 
@@ -686,8 +684,10 @@ const Simulation = () => {
           >
             Save
           </button>
-          <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-4 rounded "
-          onClick={()=>handleSimulate()}>
+          <button
+            className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-4 rounded "
+            onClick={() => handleSimulate()}
+          >
             Simulate
           </button>
         </div>
@@ -695,15 +695,11 @@ const Simulation = () => {
       <ToastContainer />
 
       <div className="border border-secondary rounded-md shadow-xl bg-primary px-2   w-full mx-auto min-h-screen">
-
-      {showSimulationResult && (
-        <div className="border border-secondary rounded-2xl shadow-xl bg-primary px-2 max-w-5xl mt-4  w-full mx-auto">
-        <SimulationReport data={data}/>
-
-          
-        </div>
-      )}
-
+        {showSimulationResult && (
+          <div className="border border-secondary rounded-2xl shadow-xl bg-primary px-2 max-w-5xl mt-4  w-full mx-auto">
+            <SimulationReport data={data} />
+          </div>
+        )}
       </div>
     </div>
   );

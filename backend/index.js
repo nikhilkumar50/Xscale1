@@ -45,6 +45,10 @@ app.post("/api/saveInputCost", (req, res) => {
       } else if (!isNaN(parseFloat(value))) {
         value = parseFloat(value);
       }
+
+      if(key.endsWith("_y1") || key.endsWith("_y2") || key.endsWith("_y3") || key.endsWith("_y4") || key.endsWith("_y5")){
+        value/=100;
+      }
  
 
       formattedData.push({
@@ -124,6 +128,11 @@ app.post("/api/saveSimulationCost", (req, res) => {
       } else if (!isNaN(parseFloat(value))) {
         value = parseFloat(value);
       }
+
+      if (key === 'targetmargin' || key=="y1PriceGrowth" || key==" y2PriceGrowth" || key=="y3PriceGrowth" || key=="y4PriceGrowth" || key=="y5PriceGrowth" || key=="y1CustomerGrowth" || key=="y2CustomerGrowth" || key=="y3CustomerGrowth"|| key=="y4CustomerGrowth" || key=="y5CustomerGrowth"||key=="averagecustomerretention") {
+        value /= 100;
+      }
+    
 
       formattedData.push({
         A: key,
