@@ -64,6 +64,7 @@ const Simulation = () => {
     mincustomerY1: "",
     maxcustomerY1: "",
 
+    
     y1CustomerGrowth: "",
     y2CustomerGrowth: "",
     y3CustomerGrowth: "",
@@ -72,6 +73,8 @@ const Simulation = () => {
 
     averagecustomerretention: "",
     averagecustomerusage: "",
+
+    subscriptionType:selectedOption,
   });
 
   const handleChange = (event) => {
@@ -113,7 +116,7 @@ const Simulation = () => {
     <div className="flex flex-row w-full">
       <div
         className={`${
-          open ? "max-w-[440px]" : "w-10"
+          open ? "max-w-[440px]" : "w-fit"
         } hidden min-h-screen sm:inline-block relative duration-300 bg-gray-100 border-r border-gray-200 dark:border-gray-600 p-4 dark:bg-slate-800 `}
       >
         <BsArrowLeftCircle
@@ -144,7 +147,7 @@ const Simulation = () => {
                 className={`border-secondary border-2  ${
                   open && "max-w-36"
                 } text-primary rounded-md p-2 max-w-32 h-6`}
-                type="number"
+                type="text"
                 id="TargetRevenue"
                 name="TargetRevenue"
                 onChange={handleChange}
@@ -162,7 +165,7 @@ const Simulation = () => {
                 className={`border-secondary border-2  ${
                   open && "max-w-36"
                 } text-primary rounded-md p-2 max-w-32 h-6`}
-                type="number"
+                type="text"
                 id="TargetYear"
                 name="TargetYear"
                 onChange={handleChange}
@@ -182,7 +185,7 @@ const Simulation = () => {
               className={`border-secondary border-2  ${
                 open && "max-w-36"
               } text-primary rounded-md p-2 max-w-32 h-6`}
-              type="number"
+              type="text"
               id="TargetMargin"
               name="TargetMargin"
               onChange={handleChange}
@@ -208,7 +211,7 @@ const Simulation = () => {
                   className={`border-secondary border-2  ${
                     open && "max-w-36"
                   } text-primary rounded-md p-2 max-w-32 h-6`}
-                  type="number"
+                  type="text"
                   id="minProductPriceRange"
                   name="minProductPriceRange"
                   onChange={handleChange}
@@ -227,7 +230,7 @@ const Simulation = () => {
                   className={`border-secondary border-2  ${
                     open && "max-w-36"
                   } text-primary rounded-md p-2 max-w-32 h-6`}
-                  type="number"
+                  type="text"
                   id="maxProductPriceRange"
                   name="maxProductPriceRange"
                   onChange={handleChange}
@@ -253,7 +256,7 @@ const Simulation = () => {
                 className={`border-secondary border-2  ${
                   open && "max-w-36"
                 } text-primary rounded-md p-2 max-w-32 h-6`}
-                type="number"
+                type="text"
                 id="upfrontfixedfee"
                 name="upfrontfixedfee"
                 onChange={handleChange}
@@ -274,10 +277,11 @@ const Simulation = () => {
                     type="radio"
                     id="annual"
                     name="subscriptionType"
-                    value="annual"
+                    value="Annually"
                     className="hidden"
                     checked={selectedOption === "annual"}
-                    onChange={() => setSelectedOption("annual")}
+                    onChange={handleChange}
+                    onClick={()=>setSelectedOption("annual")}
                   />
                   <div
                     className={`border-secondary border-2 rounded-md h-6 cursor-pointer ${
@@ -297,7 +301,8 @@ const Simulation = () => {
                     value="monthly"
                     className="hidden"
                     checked={selectedOption === "monthly"}
-                    onChange={() => setSelectedOption("monthly")}
+                    onChange={handleChange}
+                    onClick={() => setSelectedOption("monthly")}
                   />
                   <div
                     className={`border-secondary border-2 rounded-md  cursor-pointer ${
@@ -332,7 +337,7 @@ const Simulation = () => {
                   open && "max-w-10"
                 } text-primary rounded-md p-2 max-w-14 h-6 text-black`}
                 id="y1PriceGrowth"
-                type="number"
+                type="text"
                 name="y1PriceGrowth"
                 onChange={handleChange}
                 value={formData.y1PriceGrowth}
@@ -351,7 +356,7 @@ const Simulation = () => {
                   open && "max-w-10"
                 } text-primary rounded-md p-2 max-w-14 text-black h-6`}
                 id="y2PriceGrowth"
-                type="number"
+                type="text"
                 name="y2PriceGrowth"
                 onChange={handleChange}
                 value={formData.y2PriceGrowth}
@@ -370,7 +375,7 @@ const Simulation = () => {
                   open && "max-w-10"
                 } text-primary rounded-md p-2 max-w-14 text-black h-6`}
                 id="y3PriceGrowth"
-                type="number"
+                type="text"
                 name="y3PriceGrowth"
                 onChange={handleChange}
                 value={formData.y3PriceGrowth}
@@ -389,7 +394,7 @@ const Simulation = () => {
                   open && "max-w-10"
                 } text-primary rounded-md p-2 max-w-14 text-black h-6`}
                 id="y4PriceGrowth"
-                type="number"
+                type="text"
                 name="y4PriceGrowth"
                 onChange={handleChange}
                 value={formData.y4PriceGrowth}
@@ -408,7 +413,7 @@ const Simulation = () => {
                   open && "max-w-10"
                 } text-primary rounded-md p-2 max-w-12 text-black h-6`}
                 id="y5PriceGrowth"
-                type="number"
+                type="text"
                 name="y5PriceGrowth"
                 onChange={handleChange}
                 value={formData.y5PriceGrowth}
@@ -429,7 +434,7 @@ const Simulation = () => {
                   open && "max-w-16"
                 } text-primary rounded-lg p-2 max-w-12 text-black`}
                 id="y4PriceGrowth"
-                type="number"
+                type="text"
               />
             </div>
 
@@ -445,7 +450,7 @@ const Simulation = () => {
                   open && "max-w-16"
                 } text-primary rounded-lg p-2 max-w-12 text-black`}
                 id="y5PriceGrowth"
-                type="number"
+                type="text"
               />
             </div>
           </div> */}
@@ -470,7 +475,7 @@ const Simulation = () => {
                   className={`border-secondary border-2  ${
                     open && "max-w-36"
                   } text-primary rounded-md p-2 max-w-32 h-6`}
-                  type="number"
+                  type="text"
                   id="mincustomerY1"
                   name="mincustomerY1"
                   onChange={handleChange}
@@ -489,7 +494,7 @@ const Simulation = () => {
                   className={`border-secondary border-2  ${
                     open && "max-w-36"
                   } text-primary rounded-md p-2 max-w-32 h-6`}
-                  type="number"
+                  type="text"
                   id="maxcustomerY1"
                   name="maxcustomerY1"
                   onChange={handleChange}
@@ -518,7 +523,7 @@ const Simulation = () => {
                   open && "max-w-10"
                 } text-primary rounded-md p-2 max-w-14 h-6 text-black`}
                 id="y1CustomerGrowth"
-                type="number"
+                type="text"
                 name="y1CustomerGrowth"
                 onChange={handleChange}
                 value={formData.y1CustomerGrowth}
@@ -537,7 +542,7 @@ const Simulation = () => {
                   open && "max-w-10"
                 } text-primary rounded-md p-2 max-w-14 text-black h-6`}
                 id="y2CustomerGrowth"
-                type="number"
+                type="text"
                 name="y2CustomerGrowth"
                 onChange={handleChange}
                 value={formData.y2CustomerGrowth}
@@ -556,7 +561,7 @@ const Simulation = () => {
                   open && "max-w-10"
                 } text-primary rounded-md p-2 max-w-14 h-6 text-black`}
                 id="y3CustomerGrowth"
-                type="number"
+                type="text"
                 name="y3CustomerGrowth"
                 onChange={handleChange}
                 value={formData.y3CustomerGrowth}
@@ -575,7 +580,7 @@ const Simulation = () => {
                   open && "max-w-10"
                 } text-primary rounded-md p-2 max-w-14 text-black h-6`}
                 id="y4CustomerGrowth"
-                type="number"
+                type="text"
                 name="y4CustomerGrowth"
                 onChange={handleChange}
                 value={formData.y4CustomerGrowth}
@@ -594,7 +599,7 @@ const Simulation = () => {
                   open && "max-w-10"
                 } text-primary rounded-md h-6 p-2 max-w-12 text-black`}
                 id="y5CustomerGrowth"
-                type="number"
+                type="text"
                 name="y5CustomerGrowth"
                 onChange={handleChange}
                 value={formData.y5CustomerGrowth}
@@ -614,7 +619,7 @@ const Simulation = () => {
                   open && "max-w-16"
                 } text-primary rounded-lg p-2 max-w-12 text-black`}
                 id="y4CustomerGrowth"
-                type="number"
+                type="text"
               />
             </div>
 
@@ -630,7 +635,7 @@ const Simulation = () => {
                   open && "max-w-16"
                 } text-primary rounded-lg p-2 max-w-12 text-black`}
                 id="y5CustomerGrowth"
-                type="number"
+                type="text"
               />
             </div>
           </div> */}
@@ -646,7 +651,7 @@ const Simulation = () => {
               className={`border-secondary border-2  ${
                 open && "max-w-36"
               } text-primary rounded-md h-6 p-2 max-w-32`}
-              type="number"
+              type="text"
               id="averagecustomerretention"
               name="averagecustomerretention"
               onChange={handleChange}
@@ -665,7 +670,7 @@ const Simulation = () => {
               className={`border-secondary border-2  ${
                 open && "max-w-36"
               } text-primary rounded-md h-6 p-2 max-w-32`}
-              type="number"
+              type="text"
               id="averagecustomerusage"
               name="averagecustomerusage"
               onChange={handleChange}

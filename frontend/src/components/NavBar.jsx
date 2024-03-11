@@ -39,6 +39,8 @@ const Navbar = () => {
         >
           Simulation
         </Link>
+
+        
       </div>
 
       {user?.email ? (

@@ -111,6 +111,24 @@ const InputCost = () => {
     });
   };
 
+  const handlePercentageChange = (event) => {
+    let value = event.target.value;
+    
+    
+    if (!value.endsWith('%')) {
+      
+      value += '%';
+    }
+    
+    
+    setFormData({
+      ...formData,
+      [event.target.name]: value
+    });
+  };
+  
+  
+
   const staticValues = [
     "YOY % Change in Product Development Cost",
     "YOY % Change in Admin Cost",
@@ -141,6 +159,11 @@ const InputCost = () => {
   };
 
   const handleSubmit = async (event) => {
+    if (!formData.costTitle || !formData.description || !formData.ProductName || !formData.geolocation) {
+      
+      toast.error("Required Field are empty .");
+      return false;
+    }
     try {
       const response = await axios.post(
         "http://localhost:8000/api/saveInputCost",
@@ -197,7 +220,7 @@ const InputCost = () => {
               <div className="md:max-w-[450px]">
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <label className="text-primary mb-2 " htmlFor="costTitle">
-                    Cost Title
+                    Cost Title <span className="text-red-500">*</span>
                   </label>
                   <input
                     className="border-secondary border-2 text-primary rounded-md p-2 h-10"
@@ -206,12 +229,13 @@ const InputCost = () => {
                     name="costTitle"
                     onChange={handleChange}
                     value={formData.costTitle}
+                    
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <label className="text-primary mb-2 text-md" htmlFor="description">
-                    Description
+                    Description <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     className="border-secondary border-2 rounded-md p-2 min-h-12"
@@ -220,6 +244,7 @@ const InputCost = () => {
                     name="description"
                     onChange={handleChange}
                     value={formData.description}
+                    
                   />
                 </div>
               </div>
@@ -227,7 +252,7 @@ const InputCost = () => {
               <div className="grid grid-cols-2">
                 <div className="md:max-w-[450px] grid grid-cols-2 gap-4 mb-4">
                   <label className="text-primary " htmlFor="ProductName">
-                    Product Name
+                    Product Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
@@ -241,7 +266,7 @@ const InputCost = () => {
 
                 <div className="md:max-w-[450px] grid grid-cols-2 gap-4 mb-4">
                   <label className="text-primary mb-2" htmlFor="geolocation">
-                    Geo Location
+                    Geo Location <span className="text-red-500">*</span>
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
@@ -302,7 +327,7 @@ const InputCost = () => {
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
-                    type="number"
+                    type="text"
                     id="upFrontProductDevelopmentCost"
                     name="upFrontProductDevelopmentCost"
                     onChange={handleChange}
@@ -319,7 +344,7 @@ const InputCost = () => {
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
-                    type="number"
+                    type="text"
                     id="ongoingproductdevelopmentCost"
                     name="ongoingproductdevelopmentCost"
                     onChange={handleChange}
@@ -336,7 +361,7 @@ const InputCost = () => {
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
-                    type="number"
+                    type="text"
                     id="otherFixedAdminCost"
                     name="otherFixedAdminCost"
                     onChange={handleChange}
@@ -353,7 +378,7 @@ const InputCost = () => {
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
-                    type="number"
+                    type="text"
                     id="otherFixedInfrastructureCost"
                     name="otherFixedInfrastructureCost"
                     onChange={handleChange}
@@ -370,7 +395,7 @@ const InputCost = () => {
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
-                    type="number"
+                    type="text"
                     id="upfrontImplementationCostPerCustomer"
                     name="upfrontImplementationCostPerCustomer"
                     onChange={handleChange}
@@ -387,7 +412,7 @@ const InputCost = () => {
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
-                    type="number"
+                    type="text"
                     id="salesAndMarketingCost"
                     name="salesAndMarketingCost"
                     onChange={handleChange}
@@ -404,7 +429,7 @@ const InputCost = () => {
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
-                    type="number"
+                    type="text"
                     id="extraCostSpace1"
                     name="extraCostSpace1"
                     onChange={handleChange}
@@ -421,7 +446,7 @@ const InputCost = () => {
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
-                    type="number"
+                    type="text"
                     id="extraCostSpace2"
                     name="extraCostSpace2"
                     onChange={handleChange}
@@ -478,7 +503,7 @@ const InputCost = () => {
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
-                    type="number"
+                    type="text"
                     id="infrastructureBasedCostPerUserPerYear"
                     name="infrastructureBasedCostPerUserPerYear"
                     onChange={handleChange}
@@ -495,7 +520,7 @@ const InputCost = () => {
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
-                    type="number"
+                    type="text"
                     id="ImplementationCostPerUser"
                     name="ImplementationCostPerUser"
                     onChange={handleChange}
@@ -512,7 +537,7 @@ const InputCost = () => {
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
-                    type="number"
+                    type="text"
                     id="supportCostPerYearPerUser"
                     name="supportCostPerYearPerUser"
                     onChange={handleChange}
@@ -529,7 +554,7 @@ const InputCost = () => {
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
-                    type="number"
+                    type="text"
                     id="incrementalSaledAndMarketingCostPerUser"
                     name="incrementalSaledAndMarketingCostPerUser"
                     onChange={handleChange}
@@ -543,7 +568,7 @@ const InputCost = () => {
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
-                    type="number"
+                    type="text"
                     id="costOfCapital"
                     name="costOfCapital"
                     onChange={handleChange}
@@ -560,7 +585,7 @@ const InputCost = () => {
                   </label>
                   <input
                     className="border-secondary border-2 rounded-md p-2 h-10"
-                    type="number"
+                    type="text"
                     id="otherVariableCost"
                     name="otherVariableCost"
                     onChange={handleChange}
@@ -637,17 +662,19 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="product_development_cost_y1"
                           name="product_development_cost_y1"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
-                          onChange={handleChange}
-                          value={formData.product_development_cost_y1}
+                          onChange={handleChange} 
+                          value={formData.product_development_cost_y1 } 
+
+                          
                         />
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="product_development_cost_y2"
                           name="product_development_cost_y2"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -657,7 +684,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="product_development_cost_y3"
                           name="product_development_cost_y3"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -667,7 +694,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="product_development_cost_y4"
                           name="product_development_cost_y4"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -677,7 +704,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="product_development_cost_y5"
                           name="product_development_cost_y5"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -693,7 +720,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="admin_cost_y1"
                           name="admin_cost_y1"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -703,7 +730,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="admin_cost_y2"
                           name="admin_cost_y2"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -713,7 +740,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="admin_cost_y3"
                           name="admin_cost_y3"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -723,7 +750,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="admin_cost_y4"
                           name="admin_cost_y4"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -733,7 +760,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="admin_cost_y5"
                           name="admin_cost_y5"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -749,7 +776,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="infrastructure_cost_y1"
                           name="infrastructure_cost_y1"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -759,7 +786,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="infrastructure_cost_y2"
                           name="infrastructure_cost_y2"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -769,7 +796,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="infrastructure_cost_y3"
                           name="infrastructure_cost_y3"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -779,7 +806,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="infrastructure_cost_y4"
                           name="infrastructure_cost_y4"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -789,7 +816,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="infrastructure_cost_y5"
                           name="infrastructure_cost_y5"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -805,7 +832,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="sales_marketing_y1"
                           name="sales_marketing_y1"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -815,7 +842,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="sales_marketing_y2"
                           name="sales_marketing_y2"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -825,7 +852,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="sales_marketing_y3"
                           name="sales_marketing_y3"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -835,7 +862,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="sales_marketing_y4"
                           name="sales_marketing_y4"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -845,7 +872,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="sales_marketing_y5"
                           name="sales_marketing_y5"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -861,7 +888,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="fixed_cost1_y1"
                           name="fixed_cost1_y1"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -871,7 +898,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="fixed_cost1_y2"
                           name="fixed_cost1_y2"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -881,7 +908,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="fixed_cost1_y3"
                           name="fixed_cost1_y3"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -891,7 +918,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="fixed_cost1_y4"
                           name="fixed_cost1_y4"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -901,7 +928,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="fixed_cost1_y5"
                           name="fixed_cost1_y5"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -917,7 +944,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="fixed_cost2_y1"
                           name="fixed_cost2_y1"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -927,7 +954,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="fixed_cost2_y2"
                           name="fixed_cost2_y2"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -937,7 +964,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="fixed_cost2_y3"
                           name="fixed_cost2_y3"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -947,7 +974,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="fixed_cost2_y4"
                           name="fixed_cost2_y4"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -957,7 +984,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="fixed_cost2_y5"
                           name="fixed_cost2_y5"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -973,7 +1000,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="implementation_cost_y1"
                           name="implementation_cost_y1"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -983,7 +1010,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="implementation_cost_y2"
                           name="implementation_cost_y2"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -993,7 +1020,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="implementation_cost_y3"
                           name="implementation_cost_y3"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1003,7 +1030,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="implementation_cost_y4"
                           name="implementation_cost_y4"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1013,7 +1040,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="implementation_cost_y5"
                           name="implementation_cost_y5"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1030,7 +1057,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="usage_based_cost_y1"
                           name="usage_based_cost_y1"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1040,7 +1067,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="usage_based_cost_y2"
                           name="usage_based_cost_y2"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1050,7 +1077,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="usage_based_cost_y3"
                           name="usage_based_cost_y3"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1060,7 +1087,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="usage_based_cost_y4"
                           name="usage_based_cost_y4"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1070,7 +1097,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="usage_based_cost_y5"
                           name="usage_based_cost_y5"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1086,7 +1113,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="onboarding_cost_per_user_y1"
                           name="onboarding_cost_per_user_y1"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1096,7 +1123,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="onboarding_cost_per_user_y2"
                           name="onboarding_cost_per_user_y2"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1106,7 +1133,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="onboarding_cost_per_user_y3"
                           name="onboarding_cost_per_user_y3"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1116,7 +1143,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="onboarding_cost_per_user_y4"
                           name="onboarding_cost_per_user_y4"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1126,7 +1153,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="onboarding_cost_per_user_y5"
                           name="onboarding_cost_per_user_y5"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1142,7 +1169,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="support_cost_per_user_y1"
                           name="support_cost_per_user_y1"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1152,7 +1179,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="support_cost_per_user_y2"
                           name="support_cost_per_user_y2"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1162,7 +1189,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="support_cost_per_user_y3"
                           name="support_cost_per_user_y3"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1172,7 +1199,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="support_cost_per_user_y4"
                           name="support_cost_per_user_y4"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1182,7 +1209,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="support_cost_per_user_y5"
                           name="support_cost_per_user_y5"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1199,7 +1226,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="incremental_sales_cost_y1"
                           name="incremental_sales_cost_y1"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1209,7 +1236,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="incremental_sales_cost_y2"
                           name="incremental_sales_cost_y2"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1219,7 +1246,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="incremental_sales_cost_y3"
                           name="incremental_sales_cost_y3"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1229,7 +1256,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="incremental_sales_cost_y4"
                           name="incremental_sales_cost_y4"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1239,7 +1266,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="incremental_sales_cost_y5"
                           name="incremental_sales_cost_y5"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1255,7 +1282,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="other_variable_cost_y1"
                           name="other_variable_cost_y1"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1265,7 +1292,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="other_variable_cost_y2"
                           name="other_variable_cost_y2"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1275,7 +1302,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="other_variable_cost_y3"
                           name="other_variable_cost_y3"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1285,7 +1312,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="other_variable_cost_y4"
                           name="other_variable_cost_y4"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"
@@ -1295,7 +1322,7 @@ const InputCost = () => {
                       </td>
                       <td className="border-r border-secondary">
                         <input
-                          type="number"
+                          type="text"
                           id="other_variable_cost_y5"
                           name="other_variable_cost_y5"
                           className="border border-secondary rounded-md max-w-10 md:max-w-14 lg:max-w-24"

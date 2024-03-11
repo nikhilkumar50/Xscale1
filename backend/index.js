@@ -40,9 +40,12 @@ app.post("/api/saveInputCost", (req, res) => {
       let value = inputData[key];
 
       
-      if (!isNaN(parseFloat(value))) { 
+      if (!value) { 
+        value = 0 ; 
+      } else if (!isNaN(parseFloat(value))) {
         value = parseFloat(value);
-      }  
+      }
+ 
 
       formattedData.push({
         A: key,
@@ -116,9 +119,11 @@ app.post("/api/saveSimulationCost", (req, res) => {
     for (const key in inputData) {
       let value = inputData[key];
 
-      if (!isNaN(parseFloat(value))) { 
+      if (!value) { 
+        value = 0; 
+      } else if (!isNaN(parseFloat(value))) {
         value = parseFloat(value);
-      }  
+      }
 
       formattedData.push({
         A: key,
