@@ -5,25 +5,25 @@ const Table = ({ data }) => {
     <div className="container mx-auto p-4 overflow-x-auto">
       <table className="w-full table-auto border-collapse border border-slate-400">
         <thead>
-          <tr className="border-r border-secondary bg-blue-400">
-            <th className="border-r border-secondary text-primary">Year</th>
-            <th className="border-r border-secondary text-primary">Revenue</th>
-            <th className="border-r border-secondary text-primary">
+          <tr className="border-r border-secondary bg-blue-500">
+            <th className="border-r border-secondary text-white">Year</th>
+            <th className="border-r border-secondary text-white">Revenue</th>
+            <th className="border-r border-secondary text-white">
               Unit Price
             </th>
-            <th className="border-r border-secondary text-primary">
+            <th className="border-r border-secondary text-white">
               Imp Fee (if Any)
             </th>
-            <th className="border-r border-secondary text-primary">
+            <th className="border-r border-secondary text-white">
               No of Customer (Total)
             </th>
-            <th className="border-r border-secondary text-primary">
+            <th className="border-r border-secondary text-white">
               No of Customer (Retained)
             </th>
-            <th className="border-r border-secondary text-primary">
+            <th className="border-r border-secondary text-white">
               No of Customer (New)
             </th>
-            <th className="border-r border-secondary text-primary">EBITDA %</th>
+            <th className="border-r border-secondary text-white">EBITDA %</th>
           </tr>
         </thead>
 

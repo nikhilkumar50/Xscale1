@@ -39,9 +39,9 @@ const SimulationReport = ({ data }) => {
   return (
     <div className="border border-secondary rounded-md shadow-xl bg-primary px-2 w-full">
       <div className="flex flex-col sm:flex-row gap-4 justify-evenly items-center w-full mt-4 mb-4">
-        <SimulationCard title={"Product Unit Price"} value={"₹25,000"} />
-        <SimulationCard title={"Revenue"} value={"₹25,000"} />
-        <SimulationCard title={"EBITDA %"} value={"20"} />
+        <SimulationCard title={"Product Unit Price"} value={"₹500"} />
+        <SimulationCard title={"Revenue"} value={"₹2,50,000"} />
+        <SimulationCard title={"EBITDA "} value={"20%"} />
         <SimulationCard title={"No Of Customer"} value={"500"} />
       </div>
 
@@ -58,7 +58,7 @@ const SimulationReport = ({ data }) => {
 
       <div className="flex flex-col sm:flex-row gap-2 items-center">
         <h2 className="text-md font-bold mt-2 mb-2">
-          Cashflow -Nearest to Given{" "}
+          Cashflow Nearest to Given{" "}
           <span className="text-green-500">Revenue</span>{" "}
           <span className="text-green-500"> Target </span>
           <span className="text-blue-400">(Without Considering Margin)</span>

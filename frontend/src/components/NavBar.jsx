@@ -29,13 +29,13 @@ const Navbar = () => {
         </Link>
         <Link
           to="/inputcost"
-          className="bg-button text-white px-4 py-2 ml-2 rounded-sm shadow-lg hover:shadow-2xl"
+          className="bg-gradient-to-br from-blue-700 via-blue-500 to-blue-400 text-white px-4 py-2 ml-2 rounded-sm shadow-lg hover:shadow-2xl"
         >
           Cost Input
         </Link>
         <Link
           to="/simulation"
-          className="bg-button text-white px-4 py-2 ml-2 rounded-sm shadow-lg hover:shadow-2xl"
+          className="bg-gradient-to-br from-blue-700 via-blue-500 to-blue-400 text-white px-4 py-2 ml-2 rounded-sm shadow-lg hover:shadow-2xl"
         >
           Simulation
         </Link>
@@ -50,13 +50,13 @@ const Navbar = () => {
           </Link>
           <button
             onClick={handleSignOut}
-            className="ml-2 px-4  bg-button text-white rounded-sm shadow-xl hover:shadow-2xl"
+            className="ml-2 px-4  bg-gradient-to-br from-blue-700 via-blue-500 to-blue-400 text-white rounded-sm shadow-xl hover:shadow-2xl"
           >
             Sign Out
           </button>
-          <div className="hidden md:block">
+          {/* <div className="hidden md:block">
             <ThemeToggle />
-          </div>
+          </div> */}
         </div>
       ) : (
         <div className="hidden md:flex md:flex-row">

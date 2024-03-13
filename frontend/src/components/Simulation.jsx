@@ -7,6 +7,7 @@ import SimulationReport from "./SimulationReport";
 import { TbReportSearch } from "react-icons/tb";
 import LineGraph from "./LineGraph";
 import BarGraph from "./BarGraph";
+import ProductDetails from "./ProductDetails";
 
 const Simulation = () => {
   const [open, setOpen] = useState(true);
@@ -19,11 +20,12 @@ const Simulation = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/excel-data'); 
+        const response = await axios.get(
+          "http://localhost:8000/api/excel-data"
+        );
         setData(response.data);
-        
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -92,11 +94,11 @@ const Simulation = () => {
   };
 
   return (
-    <div className="flex flex-row w-full">
+    <div className="flex flex-row w-full ">
       <div
         className={`${
-          open ? "max-w-[440px]" : "w-fit"
-        } hidden min-h-screen sm:inline-block relative duration-300 bg-gray-100 border-r border-gray-200 dark:border-gray-600 p-4 dark:bg-slate-800 `}
+          open ? "max-w-[440px]" : "w-18"
+        } hidden min-h-screen sm:inline-block relative duration-300 bg-gray-200 border-r border-gray-200 dark:border-gray-600 p-4 dark:bg-slate-800 `}
       >
         <BsArrowLeftCircle
           className={`${
@@ -635,10 +637,12 @@ const Simulation = () => {
         )}
       </div>
 
+      {open && <ProductDetails />}
+
       <ToastContainer />
 
-      <div className="w-full border border-secondary rounded-md shadow-xl bg-primary px-2 min-h-screen">
-        {showSimulationResult && (
+      {showSimulationResult && (
+        <div className="w-full border border-secondary rounded-md shadow-xl bg-primary px-2 min-h-screen">
           <>
             <h1 className="text-xl font-bold text-center mb-4 p-4">
               Simulation Result
@@ -653,16 +657,16 @@ const Simulation = () => {
                   <LineGraph />
                 </div>
                 <div className="p-4">
-                  <h1 className="text-2xl font-bold mb-4">Customers Over Years</h1>
+                  <h1 className="text-2xl font-bold mb-4">
+                    Customers Over Years
+                  </h1>
                   <BarGraph />
                 </div>
               </div>
             </div>
           </>
-        )}
-      </div>
-
-     
+        </div>
+      )}
     </div>
   );
 };
