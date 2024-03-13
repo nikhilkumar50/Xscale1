@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import * as XLSX from "xlsx";
-import axios from "axios";
+import SimulationCard from "./SimulationCard";
+import { FaHandPointRight } from "react-icons/fa";
+import Table from "./Table";
 
 const SimulationReport = ({ data }) => {
   // const [data, setData] = useState([]);
@@ -34,38 +35,127 @@ const SimulationReport = ({ data }) => {
 
   //   fetchData();
   // }, [data]);
+
+  const firstTableData = {
+    revenueY1: 34200,
+    unitPriceY1: 285,
+    ImpFeeY1: 0,
+    TotalOfCustomerY1: 30,
+    RetainedCustomerY1: 0,
+    NewCustomerY1: 0,
+    EbitdaY1: -399,
+
+    revenueY2: 101574,
+    unitPriceY2: 314,
+    ImpFeeY2: 0,
+    TotalOfCustomerY2: 81,
+    RetainedCustomerY2: 21,
+    NewCustomerY2: 60,
+    EbitdaY2: -75,
+
+    revenueY3: 243740,
+    unitPriceY3: 345,
+    ImpFeeY3: 0,
+    TotalOfCustomerY3: 177,
+    RetainedCustomerY3: 57,
+    NewCustomerY3: 120,
+    EbitdaY3: 16,
+
+    revenueY4: 551841,
+    unitPriceY4: 379,
+    ImpFeeY4: 0,
+    TotalOfCustomerY4: 364,
+    RetainedCustomerY4: 124,
+    NewCustomerY4: 240,
+    EbitdaY4: 55,
+
+    revenueY5: 1114612,
+    unitPriceY5: 379,
+    ImpFeeY5: 0,
+    TotalOfCustomerY5: 735,
+    RetainedCustomerY5: 255,
+    NewCustomerY5: 480,
+    EbitdaY5: 76,
+  };
+
+  const secondTableData = {
+    revenueY1: 34200,
+    unitPriceY1: 285,
+    ImpFeeY1: 0,
+    TotalOfCustomerY1: 30,
+    RetainedCustomerY1: 0,
+    NewCustomerY1: 0,
+    EbitdaY1: "-399%",
+
+    revenueY2: 101574,
+    unitPriceY2: 314,
+    ImpFeeY2: 0,
+    TotalOfCustomerY2: 81,
+    RetainedCustomerY2: 21,
+    NewCustomerY2: 60,
+    EbitdaY2: "-75%",
+
+    revenueY3: 243740,
+    unitPriceY3: 345,
+    ImpFeeY3: 0,
+    TotalOfCustomerY3: 177,
+    RetainedCustomerY3: 57,
+    NewCustomerY3: 120,
+    EbitdaY3: 16,
+
+    revenueY4: 551841,
+    unitPriceY4: 379,
+    ImpFeeY4: 0,
+    TotalOfCustomerY4: 364,
+    RetainedCustomerY4: 124,
+    NewCustomerY4: 240,
+    EbitdaY4: 55,
+
+    revenueY5: 1114612,
+    unitPriceY5: 379,
+    ImpFeeY5: 0,
+    TotalOfCustomerY5: 735,
+    RetainedCustomerY5: 255,
+    NewCustomerY5: 480,
+    EbitdaY5: 76,
+  };
+
   return (
-    <>
-      {data.length > 0 && (
-        <div className="border border-secondary rounded-md shadow-xl bg-primary px-2  mt-4 mb-2">
-          <table className="mb-2">
-            <thead className="">
-              <tr>
-                {Object.keys(data[0]).map((key) => (
-                  <th key={key} className="px-4 py-2 text-left text-white">
-                    {key}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((row, index) => (
-                <tr key={index}>
-                  {Object.values(row).map((value, index) => (
-                    <td
-                      key={index}
-                      className="px-4 py-2 border border-secondary"
-                    >
-                      {value}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-    </>
+    <div className="border border-secondary rounded-md shadow-xl bg-primary px-2 w-full ">
+      <div className="flex flex-row gap-4 justify-evenly items-center  w-full mt-4 mb-4">
+        <SimulationCard title={"Product Unit Price"} value={"₹25,000"} />
+
+        <SimulationCard title={"Revenue"} value={"₹25,000"} />
+
+        <SimulationCard title={"EBITDA %"} value={"20"} />
+
+        <SimulationCard title={"No Of Customer"} value={"500"} />
+      </div>
+
+      <div className="flex flex-row gap-2  items-center">
+        <h2 className="text-md font-bold mt-2 mb-2 ">
+          Cashflow based on the specified{" "}
+          <span className="text-green-500">Revenue</span> and{" "}
+          <span className="text-green-500">Margin Targets </span>
+          <span className="text-blue-400">(Lowest Unit Price)</span>
+        </h2>
+      </div>
+
+      <Table data={data} />
+
+
+      <div className="flex flex-row gap-2  items-center">
+        <h2 className="text-md font-bold mt-2 mb-2 ">
+          Cashflow -Nearest to Given{" "}
+          <span className="text-green-500">Revenue</span>{" "}
+          <span className="text-green-500"> Target </span>
+          <span className="text-blue-400">(Without Considering Margin)</span>
+        </h2>
+      </div>
+
+      <Table data={data} />
+      
+    </div>
   );
 };
 

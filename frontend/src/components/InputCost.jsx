@@ -169,8 +169,7 @@ const InputCost = () => {
         "http://localhost:8000/api/saveInputCost",
         formData
       );
-      console.log("Server response:", response.data);
-      console.log(formData);
+      
       toast.success("Saved successfully!");
     } catch (error) {
       console.error("Error submitting data:", error);

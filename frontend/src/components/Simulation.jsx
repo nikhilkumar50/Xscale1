@@ -6,6 +6,9 @@ import "react-toastify/dist/ReactToastify.css";
 import SimulationReport from "./SimulationReport";
 import { TbReportSearch } from "react-icons/tb";
 import * as XLSX from "xlsx";
+import LineGraph from "./LineGraph";
+import BarGraph from "./BarGraph";
+import DataDisplay from "./DataDisplay";
 
 const Simulation = () => {
   const [open, setOpen] = useState(true);
@@ -18,29 +21,14 @@ const Simulation = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8000/api/excel-data",
-          {
-            responseType: "blob",
-          }
-        );
-        const blob = new Blob([response.data]);
-        const reader = new FileReader();
-
-        reader.onload = () => {
-          const data = reader.result;
-          const workbook = XLSX.read(data, { type: "binary" });
-          const sheetName = workbook.SheetNames[0];
-          const sheet = workbook.Sheets[sheetName];
-          const parsedData = XLSX.utils.sheet_to_json(sheet);
-          setData(parsedData);
-          console.log(parsedData);
-        };
-        reader.readAsBinaryString(blob);
+        const response = await axios.get('http://localhost:8000/api/excel-data'); 
+        setData(response.data);
+        
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       }
     };
+
     fetchData();
   }, [fetchDetails]);
 
@@ -87,8 +75,6 @@ const Simulation = () => {
         "http://localhost:8000/api/saveSimulationCost",
         formData
       );
-      console.log("Server response:", response.data);
-
       setIsSaved(true);
       setFetchDetails(!fetchDetails);
       toast.success("Saved successfully!");
@@ -193,7 +179,7 @@ const Simulation = () => {
                   name="TargetMargin"
                   onChange={handleChange}
                   value={formData.TargetMargin}
-                  autocomplete="off"
+                  autoComplete="off"
                 />
               </div>
 
@@ -348,7 +334,7 @@ const Simulation = () => {
                     name="y1PriceGrowth"
                     onChange={handleChange}
                     value={formData.y1PriceGrowth}
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
 
@@ -368,7 +354,7 @@ const Simulation = () => {
                     name="y2PriceGrowth"
                     onChange={handleChange}
                     value={formData.y2PriceGrowth}
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
 
@@ -388,7 +374,7 @@ const Simulation = () => {
                     name="y3PriceGrowth"
                     onChange={handleChange}
                     value={formData.y3PriceGrowth}
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
 
@@ -408,7 +394,7 @@ const Simulation = () => {
                     name="y4PriceGrowth"
                     onChange={handleChange}
                     value={formData.y4PriceGrowth}
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
 
@@ -428,7 +414,7 @@ const Simulation = () => {
                     name="y5PriceGrowth"
                     onChange={handleChange}
                     value={formData.y5PriceGrowth}
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
               </div>
@@ -507,7 +493,7 @@ const Simulation = () => {
                     name="y1CustomerGrowth"
                     onChange={handleChange}
                     value={formData.y1CustomerGrowth}
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
 
@@ -527,7 +513,7 @@ const Simulation = () => {
                     name="y2CustomerGrowth"
                     onChange={handleChange}
                     value={formData.y2CustomerGrowth}
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
 
@@ -547,7 +533,7 @@ const Simulation = () => {
                     name="y3CustomerGrowth"
                     onChange={handleChange}
                     value={formData.y3CustomerGrowth}
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
 
@@ -567,7 +553,7 @@ const Simulation = () => {
                     name="y4CustomerGrowth"
                     onChange={handleChange}
                     value={formData.y4CustomerGrowth}
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
 
@@ -587,7 +573,7 @@ const Simulation = () => {
                     name="y5CustomerGrowth"
                     onChange={handleChange}
                     value={formData.y5CustomerGrowth}
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
               </div>
@@ -607,7 +593,7 @@ const Simulation = () => {
                   name="averagecustomerretention"
                   onChange={handleChange}
                   value={formData.averagecustomerretention}
-                  autocomplete="off"
+                  autoComplete="off"
                 />
               </div>
 
@@ -660,18 +646,26 @@ const Simulation = () => {
               Simulation Result
             </h1>
             <div className="flex flex-row gap-1">
-              <div className="w-3/4 ">
+              <div className="w-3/4  mt-4 mb-2">
                 <SimulationReport data={data} />
               </div>
-              <div className="w-1/4 border border-black rounded-md shadow-xl bg-primary px-2 p-5  mt-4 mb-2">
-               
+              <div className="w-1/4 border border-secondary rounded-md shadow-xl bg-primary px-2 p-5  mt-4 mb-2">
+                <div className="p-4">
+                  <h1 className="text-2xl font-bold mb-4">Margin Over Years</h1>
+                  <LineGraph />
+                </div>
+                <div className="p-4">
+                  <h1 className="text-2xl font-bold mb-4">Customers Over Years</h1>
+                  <BarGraph />
+                </div>
               </div>
             </div>
           </>
         )}
       </div>
+
+     
     </div>
   );
 };
-
 export default Simulation;
