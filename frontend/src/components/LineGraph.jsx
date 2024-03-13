@@ -28,7 +28,7 @@ function LineGraph() {
   };
 
   return (
-    <div className="w-full "> 
+    <div className="w-full h-56"> 
       <Line data={data} options={options} />
     </div>
   );

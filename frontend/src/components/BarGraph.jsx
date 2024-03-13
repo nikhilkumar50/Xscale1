@@ -25,7 +25,7 @@ function BarGraph() {
   };
 
   return (
-    <div className="w-full max-w-md">
+    <div className="w-full max-w-md h-64" >
       <Bar data={data} options={options} />
     </div>
   );
