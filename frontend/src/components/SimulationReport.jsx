@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import SimulationCard from "./SimulationCard";
-import { FaHandPointRight } from "react-icons/fa";
 import Table from "./Table";
 
 const SimulationReport = ({ data }) => {

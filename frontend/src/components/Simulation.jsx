@@ -5,10 +5,8 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SimulationReport from "./SimulationReport";
 import { TbReportSearch } from "react-icons/tb";
-import * as XLSX from "xlsx";
 import LineGraph from "./LineGraph";
 import BarGraph from "./BarGraph";
-import DataDisplay from "./DataDisplay";
 
 const Simulation = () => {
   const [open, setOpen] = useState(true);
