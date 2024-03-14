@@ -178,7 +178,7 @@ const InputCost = () => {
 
   return (
     <div className="rounded-div my-4 pt-1 min-h-auto ">
-      <h1 className="text-primary bg-back font-bold  mb-4 p-3 text-center border border-secondary rounded-md shadow-xl px-2 max-w-[1110px] w-full mx-auto py-3">
+      <h1 className="text-white bg-gradient-to-br from-blue-700 via-blue-500 to-blue-300 font-bold  mb-4 p-3 text-center border border-secondary rounded-md shadow-xl px-2 max-w-[1110px] w-full mx-auto py-3">
         Cost Information
       </h1>
       <div className="grid grid-cols-1 gap-4">
@@ -1357,11 +1357,11 @@ const InputCost = () => {
         </div>
       </div>
 
-      <div className="text-primary bg-back font-bold mb-4 p-3 text-center border border-secondary rounded-md shadow-xl px-2 max-w-[1110px] w-full mx-auto py-2 flex justify-between items-center">
+      <div className="text-white bg-gradient-to-br from-blue-700 via-blue-500 to-blue-300 font-bold mb-4 p-3 text-center border border-secondary rounded-md shadow-xl px-2 max-w-[1110px] w-full mx-auto py-2 flex justify-between items-center">
         <div className="flex-grow"></div>{" "}
         {/* Empty div to push buttons to the right */}
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded mr-4"
+          className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-1 px-4 rounded mr-4"
           onClick={() => handleSubmit()}
         >
           Save
