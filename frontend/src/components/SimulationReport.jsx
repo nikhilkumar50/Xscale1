@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SimulationCard from "./SimulationCard";
 import Table from "./Table";
 
@@ -35,14 +35,18 @@ const SimulationReport = ({ data }) => {
   //   fetchData();
   // }, [data]);
 
+  const firstData = data[1];
+
+  
+  const { __EMPTY, __EMPTY_1,  __EMPTY_3,  __EMPTY_6 } = firstData;
   
   return (
     <div className="border border-secondary rounded-md shadow-xl bg-primary px-2 w-full">
       <div className="flex flex-col sm:flex-row gap-4 justify-evenly items-center w-full mt-4 mb-4">
-        <SimulationCard title={"Product Unit Price"} value={"₹500"} />
-        <SimulationCard title={"Revenue"} value={"₹2,50,000"} />
-        <SimulationCard title={"EBITDA "} value={"20%"} />
-        <SimulationCard title={"No Of Customer"} value={"500"} />
+        <SimulationCard title={"Product Unit Price"} value={__EMPTY_1} />
+        <SimulationCard title={"Revenue"} value={__EMPTY} />
+        <SimulationCard title={"EBITDA %"} value={__EMPTY_6} />
+        <SimulationCard title={"No Of Customer"} value={__EMPTY_3} />
       </div>
 
       <div className="flex flex-col sm:flex-row gap-2 items-center">
