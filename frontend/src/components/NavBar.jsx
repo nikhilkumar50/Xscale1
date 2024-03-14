@@ -7,7 +7,7 @@ import { UserAuth } from "../context/AuthContext";
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const { user, logout } = UserAuth();
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   const handleNav = () => {
     setNav(!nav);
@@ -39,8 +39,6 @@ const Navbar = () => {
         >
           Simulation
         </Link>
-
-        
       </div>
 
       {user?.email ? (
@@ -60,8 +58,6 @@ const Navbar = () => {
         </div>
       ) : (
         <div className="hidden md:flex md:flex-row">
-          
-          
           <div className="hidden md:block">
             <ThemeToggle />
           </div>
@@ -74,7 +70,6 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-
       <div
         className={
           nav
