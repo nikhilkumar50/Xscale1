@@ -93,6 +93,16 @@ const Simulation = () => {
     setOpen(!open);
   };
 
+  const firstData = data[1];
+  const secondData = data[2];
+  const thirdData = data[3];
+  const fourthData = data[4];
+  const fifthData = data[5];
+
+  
+  
+
+
   return (
     <div className="flex flex-row w-full ">
       <div
@@ -653,14 +663,14 @@ const Simulation = () => {
               </div>
               <div className="w-1/4 border border-secondary rounded-md shadow-xl bg-primary px-2 p-5  mt-4 mb-2">
                 <div className="p-4">
-                  <h1 className="text-2xl font-bold mb-4">Margin Over Years</h1>
-                  <LineGraph />
+                  <h1 className="text-2xl font-bold mb-4">Ebita Over Years</h1>
+                  <LineGraph firstData={firstData} secondData={secondData} thirdData={thirdData} fourthData={fourthData} fifthData={fifthData} />
                 </div>
                 <div className="p-4">
                   <h1 className="text-2xl font-bold mb-4">
                     Customers Over Years
                   </h1>
-                  <BarGraph />
+                  <BarGraph firstData={firstData} secondData={secondData} thirdData={thirdData} fourthData={fourthData} fifthData={fifthData}  />
                 </div>
               </div>
             </div>
